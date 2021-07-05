@@ -13,6 +13,10 @@ body {
     /* background-image: url('https://source.unsplash.com/1600x900/?weather'); */
 } 
 
+.jumbotron {
+    display: inline;
+}
+
 .card {
     background: #111111d0;
     color: blanchedalmond;
