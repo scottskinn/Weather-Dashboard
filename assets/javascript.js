@@ -85,7 +85,9 @@ if(localStorageContent === null) {
 
 // }
 
-
+// THEN I am presented with a 5-day forecast that displays the date, 
+// an icon representation of weather conditions, the temperature, the wind speed, 
+// and the humidity
 // 5 day forecast
 let forecast = {
     "apiKey": "e314e8030b2159c0fff5919b834d4dd4",
@@ -96,23 +98,25 @@ let forecast = {
          + this.apiKey)
 
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        // .then((data) => console.log(data))
         .then((data) => this.displayForecast(data));
     },
 
     displayForecast: function(data) {
-        const name = data;
-        // const { icon, description } = data.list[0].weather.description;
+        // const name = data;
+        console.log(data);
         const  {humidity, temp}  = data.list[0].main;
-        const  speed  = data.Array[0].wind.speed;
-        console.log(name,temp,humidity,speed);
+        const icon  = data.list[0].weather[0].icon;
+        
+        const  speed  = data.list[0].wind.speed;
+        console.log(temp,humidity,speed,icon);
 
-        document.querySelector(".city").innerText = "Weather in " + name; 
-        document.querySelector(".icon").src= "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-        document.querySelector(".description").innerText = description;
-        document.querySelector(".temp").innerText = temp;
-        document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
-        document.querySelector(".wind").innerText = "Speed: " + speed + " km/h";
+        // document.querySelector(".city").innerText = "Weather in " + name; 
+        document.querySelector("# icon").src= "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+        // document.querySelector(".description").innerText = description;
+        document.querySelector("#temp").innerText = temp;
+        document.querySelector("#humidity").innerText = "Humidity: " + humidity + "%";
+        document.querySelector("#wind").innerText = "Speed: " + speed + " km/h";
 
     },
     search: function () {
